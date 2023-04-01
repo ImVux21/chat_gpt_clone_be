@@ -34,8 +34,9 @@ tasks.named('test') {
 
 jar {
     manifest {
-        attributes(
-                'Main-Class': 'com.example.chat_gpt_clone_be.ChatGptCloneBeApplication'
-        )
+        attributes 'Main-Class': 'com.example.chat_gpt_clone_be.ChatGptCloneBeApplication' // Update this line to use your application's fully qualified class name
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
